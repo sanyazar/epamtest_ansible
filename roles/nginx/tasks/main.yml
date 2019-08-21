@@ -18,6 +18,10 @@
     dest: /etc/nginx/sites-enabled/{{ server_hostname }}
     state: link
   become: yes
+- name: Creates directory
+  file:
+    path: /var/www/{{ server_hostname }}
+    state: directory
 - name: copy the content of the web site
   template: 
     src: index.html
